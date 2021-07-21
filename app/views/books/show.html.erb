@@ -1,26 +1,37 @@
-<div class="col-md-8 offset-md-1">
-  <h2>Book detail</h2>
-        <table class="table">
-          <tbody>
+<%= flash[:notice] %>
+<div class="container">
+   <div class="row">
+     <div class="col-md-3">
 
-            <tr>
-              <td>
-                <%= @user.profile_image_id %>
-                <%= @user.name %>
-              </td>
-              <td><%= @book.title %></td>
-              <td><%= @book.body %></td>
-              <td>
-                <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
-              </td>
-              <td>
-                <%= link_to "Destroy", books_path, class:"btn btn-sm btn-danger" %>
-              </td>
+     <%= render 'users/userinfo', user: @users %>
 
-              <td colspan="3"></td>
-            </tr>
+     <%= render 'users/newbook', new_book: @new_book %>
+
+     </div>
 
 
-          </tbody>
-        </table>
-      </div>
+     <div class="col-md-8 offset-md-1">
+       <h2>Book detail</h2>
+       <table class="table table-hover table-inverse">
+         <tbody>
+           <tr>
+             <td>
+              <img src=<%= @users.profile_image_id %> class = "attachment user profile_image fallback" >
+              <%= @users.name %>
+             </td>
+             <td><%= @book.title %></td>
+             <td><%= @book.body %></td>
+             <td>
+               <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
+             </td>
+             <td>
+               <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %>
+             </td>
+             <td colspan="3"></td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+
+   </div>
+</div>
