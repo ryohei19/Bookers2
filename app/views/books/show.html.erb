@@ -1,2 +1,26 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+
+            <tr>
+              <td>
+                <%= @user.profile_image_id %>
+                <%= @user.name %>
+              </td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <td>
+                <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
+              </td>
+              <td>
+                <%= link_to "Destroy", books_path, class:"btn btn-sm btn-danger" %>
+              </td>
+
+              <td colspan="3"></td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
