@@ -1,7 +1,7 @@
 
       <h2>User info</h2>
-      <img class = "attachment user profile_image fallback" src = "/assets/noimage.png">
-      <table class = "table">
+       <%= attachment_image_tag user, :profile_image, size: "70x70", format: 'jpeg',fallback: "no_image.jpg" %>.
+       <table class = "table">
         <tbody>
           <tr></tr>
           <tr>
@@ -16,7 +16,9 @@
       </table>
 
       <div class="row">
+        <% if user.id == current_user.id %>
         <a class = "btn btn-outline-secondary btn-block fas fa-user-cog" href = "/users/:id/edit" ></a>
+        <% end %>
       </div>
 
 

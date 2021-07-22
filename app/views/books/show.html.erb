@@ -3,7 +3,7 @@
    <div class="row">
      <div class="col-md-3">
 
-     <%= render 'users/userinfo', user: @users %>
+     <%= render 'users/userinfo', user: @user %>
 
      <%= render 'users/newbook', new_book: @new_book %>
 
@@ -16,16 +16,20 @@
          <tbody>
            <tr>
              <td>
-              <img src=<%= @users.profile_image_id %> class = "attachment user profile_image fallback" >
-              <%= @users.name %>
+              <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+              <%= @user.name %>
              </td>
              <td><%= @book.title %></td>
              <td><%= @book.body %></td>
              <td>
+               <% if @user.id == current_user.id %>
                <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
+               <% end %>
              </td>
              <td>
+               <% if @user.id == current_user.id %>
                <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %>
+               <% end %>
              </td>
              <td colspan="3"></td>
            </tr>

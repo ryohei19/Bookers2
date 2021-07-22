@@ -23,8 +23,7 @@
             <% @users.each do |user| %>
             <tr>
               <td>
-                <img src=<%= user.profile_image_id %> class = "attachment user profile_image fallback" >
-              </td>
+                <%= attachment_image_tag user, :profile_image, size: "50x50", format:'jpeg', fallback:"no_image.jpg" %>              </td>
               <td>
                 <%= user.name %>
               </td>
