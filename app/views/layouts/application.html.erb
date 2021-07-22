@@ -4,7 +4,6 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://kit.fontawesome.com/a9c6483f70.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -29,7 +28,7 @@
             <ul class = "navbar-nav ml-auto">
             <% if user_signed_in? %>
               <span>
-                <%= link_to "Home", user_session_path, class:"fas fa-home nav-link text-light" %>
+                <%= link_to "Home", user_path, class:"fas fa-home nav-link text-light" %>
               </span>
 
               <span>
@@ -59,7 +58,7 @@
               </span>
 
               <span>
-                <%= link_to "login", user_session_path, class:"fas fa-sign-in-alt nav-link text-light" %>
+                <%= link_to "login", new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light" %>
               </span>
 
             <% end %>

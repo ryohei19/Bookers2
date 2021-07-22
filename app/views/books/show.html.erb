@@ -1,4 +1,3 @@
-<%= flash[:notice] %>
 <div class="container">
    <div class="row">
      <div class="col-md-3">
@@ -16,8 +15,12 @@
          <tbody>
            <tr>
              <td>
-              <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
-              <%= @user.name %>
+              <%= link_to user_path(@user) do %>
+                <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %></br>
+              <% end %>
+              <%= link_to user_path(@user) do %>
+                <%= @user.name %>
+              <% end %>
              </td>
              <td><%= @book.title %></td>
              <td><%= @book.body %></td>

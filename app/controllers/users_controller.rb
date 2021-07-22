@@ -12,13 +12,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    unless current_user.id == @user.id
+      redirect_to books_path
+    end
+
   end
 
   def update
     @user = current_user
     @user.update(user_params)
     redirect_to user_path(@user)
+    flash[:notice] = "You have updated user successfully."
   end
 
   private
