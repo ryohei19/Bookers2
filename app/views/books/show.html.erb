@@ -74,8 +74,12 @@
            <% @book.book_comment.each do |book_comment| %>
            <tr>
              <td>
-              <%= attachment_image_tag book_comment.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
-              <%= book_comment.user.name %>
+              <%= link_to user_path(book_comment.user) do %>
+                <%= attachment_image_tag book_comment.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %></br>
+              <% end %>
+              <%= link_to user_path(book_comment.user) do %>
+                <%= book_comment.user.name %>
+              <% end %>
              </td>
              <td>
               <%= book_comment.comment %>
@@ -91,7 +95,7 @@
        </table>
        <div class = "form-group">
          <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
-             <%= f.text_area :comment, rows:'5', span:'10' %>
+             <%= f.text_area :comment, size: "50x5" %>
              <%= f.submit "送信" %>
          <% end %>
        </div>
