@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :books,dependent: :destroy
   has_many :favorites,dependent: :destroy
+  has_many :book_comment,dependent: :destroy
+
 
   validates :name,presence:true, uniqueness:true,
                   length: { minimum: 2, maximum: 20 }
